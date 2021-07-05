@@ -1,4 +1,5 @@
 const express = require('express')
+const cors =  require('cors')
 const app = express()
 const server = require('http').Server(app)
 const io = require('socket.io')(server,{
@@ -7,7 +8,7 @@ const io = require('socket.io')(server,{
     methods: ["GET", "POST"]
 }
 })
-const cors =  require('cors')
+
 
 app.use(cors())
 io.on('connection', socket => {
