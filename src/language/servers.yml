@@ -1,0 +1,20 @@
+langservers:
+        ts:
+                - typescript-language-server
+                - --stdio
+
+        json:
+                - vscode-json-languageserver
+                - --stdio
+        php:
+                - phpunit-language-server
+                - --stdio
+        python:
+                - pyls
+               
+        c:      
+                - clangd
+                - --log=info
+  
+                
+        

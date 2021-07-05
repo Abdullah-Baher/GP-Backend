@@ -1,0 +1,27 @@
+version: "3"
+services: 
+    server:
+        container_name: colab-server
+        build: .
+        ports: 
+            - "3000:3000"
+            - "3001:3001"
+            - "3002:3002"
+            - "4000:4000"
+            - "9000:9000"
+        depends_on: [mongo]
+        restart: always
+        links: 
+            - mongo
+
+    mongo:
+        container_name: mongo
+        image: mongo
+        restart: always
+        volumes: 
+            - "./data:/data/db"
+        ports: 
+            - "4005:27017"
+
+
+    
