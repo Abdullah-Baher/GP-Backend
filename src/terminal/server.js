@@ -17,7 +17,7 @@ server.listen(serverPort);
 //socket.io instantiation
 const io = require("socket.io")(server, {
     cors: {
-        origin: "http://localhost:3005",
+        origin: '*',
         methods: ["GET", "POST"]
     }
 });
