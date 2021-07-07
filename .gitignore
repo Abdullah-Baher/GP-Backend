@@ -4,6 +4,5 @@ node_modules
 ./src/endpoints/uploads/*
 
 ./src/endpoints/pictures/*
-
-./data/*
+data
 
