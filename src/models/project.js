@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const fs = require('fs');
 const File = require('./file');
+const Channel = require('./channel');
 
 const projectSchema = new mongoose.Schema({
     name: {
@@ -42,6 +43,7 @@ projectSchema.pre('remove', async function (next) {
     const project = this;
     await fs.promises.rmdir(project.path);
     await File.deleteMany({ project: project._id });
+    await Channel.deleteMany({ project: project._id });
     next();
 })
 

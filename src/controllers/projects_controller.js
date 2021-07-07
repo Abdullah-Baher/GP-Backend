@@ -9,7 +9,7 @@ const postProject = async (req, res) => {
         const project = new Project({
             ...req.body,
             creator: req.user._id,
-            members: JSON.parse(req.body.members),
+            members: req.body.members,
             path: ""
         });
 
