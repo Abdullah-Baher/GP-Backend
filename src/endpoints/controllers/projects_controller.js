@@ -20,7 +20,7 @@ const postProject = async (req, res) => {
             }
         }
         
-        project.path = "D:/GP/projects/" + req.body.name +' ' + project._id;
+        project.path = "../../../projects" + req.body.name +' ' + project._id;
         await fs.promises.mkdir(project.path);
         await project.save();
         res.status(201).send(project);
@@ -43,8 +43,8 @@ const updateProject = async (req, res) => {
 
 
         if(updates.includes('name')) {
-            await fs.promises.rename(req.project.path, "D:/GP/projects/" + req.body.name + ' ' + req.project._id);
-            req.project.path = "D:/GP/projects/" + req.body.name + ' ' + req.project._id;
+            await fs.promises.rename(req.project.path, "../../../projects" + req.body.name + ' ' + req.project._id);
+            req.project.path = "../../../projects" + req.body.name + ' ' + req.project._id;
             req.project.name = req.body.name;
         }
 
