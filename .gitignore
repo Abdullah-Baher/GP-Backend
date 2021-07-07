@@ -5,3 +5,5 @@ node_modules
 
 ./src/endpoints/pictures/*
 
+./data/*
+
