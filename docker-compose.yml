@@ -13,6 +13,10 @@ services:
         restart: always
         links: 
             - mongo
+        volumes:
+            - "./projects:/src/endpoints/projects"
+
+        
 
     mongo:
         container_name: mongo
@@ -28,7 +32,7 @@ services:
         image: rastasheep/ubuntu-sshd
         restart: always
         volumes: 
-            - "./projects:/project"
+            - "./projects:/projects"
         ports:
             - "5000:22"
 

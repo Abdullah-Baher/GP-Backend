@@ -2,7 +2,9 @@ const fs = require('fs')
 const Project = require('../models/project');
 const User = require('../models/user');
 const ProjectsValidations = require('../validations/project');
+const path ="/src/endpoints/projects/"
 
+var mkdirp = require('mkdirp');
 const postProject = async (req, res) => {
     try {
         ProjectsValidations.validateIncompleteData(req.body);
@@ -19,8 +21,10 @@ const postProject = async (req, res) => {
                 return res.status(400).send({ message: 'Invalid memberId' });
             }
         }
+       
+        project.path = path + req.body.name +'_' + project._id;
+
         
-        project.path = "../../../projects/" + req.body.name +' ' + project._id;
         await fs.promises.mkdir(project.path);
         await project.save();
         res.status(201).send(project);
@@ -43,8 +47,8 @@ const updateProject = async (req, res) => {
 
 
         if(updates.includes('name')) {
-            await fs.promises.rename(req.project.path, "../../../projects/" + req.body.name + ' ' + req.project._id);
-            req.project.path = "../../../projects/" + req.body.name + ' ' + req.project._id;
+            await fs.promises.rename(req.project.path, path + req.body.name + '_' + req.project._id);
+            req.project.path = path + req.body.name + '_' + req.project._id;
             req.project.name = req.body.name;
         }
 
