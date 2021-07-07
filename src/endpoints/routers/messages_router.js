@@ -3,11 +3,11 @@ const MessagesController = require('../controllers/Message_controller');
 const auth = require('../middleware/auth');
 const multer = require('multer');
 const { v4: uuidv4 } = require('uuid');
-
+const path = "/src/endpoints/pictures/"
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, 'src/pictures');
+        cb(null, path);
     },
     filename: function(req, file, cb) {
         cb(null, uuidv4() + req.user._id  + " " + file.originalname);

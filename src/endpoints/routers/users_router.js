@@ -2,12 +2,12 @@ const express = require('express')
 const UsersController = require('../controllers/users_controller');
 const auth = require('../middleware/auth');
 const multer = require('multer');
-
+const path = "/src/endpoints/uploads/"
 const router = express.Router();
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, 'src/uploads');
+        cb(null, path);
     },
     filename: function(req, file, cb) {
         cb(null, req.user._id + " " + file.originalname);
