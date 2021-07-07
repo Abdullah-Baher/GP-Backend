@@ -22,6 +22,7 @@ services:
             - "./data:/data/db"
         ports: 
             - "4005:27017"
+            
     compiler:
         container_name: compiler
         image: rastasheep/ubuntu-sshd
