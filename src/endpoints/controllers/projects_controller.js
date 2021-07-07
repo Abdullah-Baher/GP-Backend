@@ -115,15 +115,17 @@ const deleteProject = async (req, res) => {
 
 const getProjects = async (req, res) => {
     try {
-        const creatorId = req.query.creatorId;
+        const memberId = req.query.memberId;
         let projects;
 
-        if(creatorId) {
-            const creator = await User.findById(creatorId);
-            if(!creator) {
+        if(memberId) {
+            const member = await User.findById(memberId);
+            if(!member) {
                 return res.status(400).send({ message: 'Invalid userId' });
             }
-            projects = await Project.find({creator: creatorId}).populate("creator").populate("members")
+            /*projects = await Project.find({creator: creatorId}).populate("creator").populate("members")
+            .sort({ createdAt: -1 });/*.execPopulate()*/
+            projects = await Project.find({ members: { "$in": [memberId] } }).populate("creator").populate("members")
             .sort({ createdAt: -1 });/*.execPopulate()*/
         }
 
