@@ -30,7 +30,8 @@
     "utf8": "^3.0.0",
     "validator": "^13.6.0",
     "ws": "^6.2.1",
-    "xstream": "^11.14.0"
+    "xstream": "^11.14.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/node": "^10.14.8",
