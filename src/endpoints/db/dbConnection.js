@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect((process.env.ENVIRONMENT) === 'dev'? process.env.MONGOURIDEV:
-process.env.MONGOURIPROD ,
+mongoose.connect(process.env.MONGOURI,
 {
     useNewUrlParser: true,
     useUnifiedTopology: true,

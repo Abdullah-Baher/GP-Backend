@@ -8,7 +8,7 @@ const postTask = async (req, res) => {
         TasksValidations.validateIncompleteData(req.body);
         const task = new Task({
             ...req.body,
-            members: JSON.parse(req.body.members)
+            members: req.body.members
         });
 
         const project = await Project.findById(task.project);

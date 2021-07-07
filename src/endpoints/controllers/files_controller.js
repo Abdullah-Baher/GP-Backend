@@ -40,9 +40,9 @@ const updateFileData = async (req, res) => {
             return res.status(400).send({ message: 'File does not exist' });
         }
 
-        
+        console.log(req.body.fileContent);
 
-        await fs.promises.writeFile(project.path + '/' + file.name + file.extension, req.body.fileContent);
+        await fs.promises.writeFile(project.path + '/' + file.name + file.extension, req.body.fileContent,'utf-8');
         res.send();
     } catch (e) {
         res.status(400).send({ message: e.message });
