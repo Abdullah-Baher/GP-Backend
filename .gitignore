@@ -1,8 +1,8 @@
 node_modules
 projects
-
+data
 ./src/endpoints/uploads/*
 
 ./src/endpoints/pictures/*
-data
+
 
