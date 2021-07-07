@@ -52,6 +52,29 @@ io.on('connection', socket => {
       if (connectedUsers[roomId][i].userId == userId)
         connectedUsers[roomId].splice(i, 1);
   }) 
+  
+  
+  socket.on('OffsetChanged', ({startOffset, endOffset, role}) => {
+    io.emit('OffsetChanged', {startOffset, endOffset, role});
+  })
+
+  socket.on('CursorChanged', ({offset, role}) => {
+    io.emit('CursorChanged', {offset, role});
+  })
+
+  socket.on('Insert', ({ index, text, role }) => {
+    console.log(index + ' ' + text + " " + role);
+    io.emit('Insert', { index, text, role })
+  })
+
+
+  socket.on('Replace', ({ index, length, text, role }) => {
+    io.emit('Replace', { index, length, text, role })
+  })
+
+  socket.on('Delete', ({ index, length, role }) => {
+    io.emit('Delete', { index, length, role })
+  })
 
   
   
