@@ -4,5 +4,6 @@ data
 /src/endpoints/uploads/*
 
 /src/endpoints/pictures/*
-
+pictures
+uploads
 
