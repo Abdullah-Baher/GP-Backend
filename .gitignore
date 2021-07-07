@@ -1,5 +1,5 @@
 node_modules
-
+projects
 
 ./src/endpoints/uploads/*
 

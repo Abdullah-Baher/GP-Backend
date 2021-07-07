@@ -9,7 +9,7 @@ services:
             - "3002:3002"
             - "4000:4000"
             - "9000:9000"
-        depends_on: [mongo]
+        depends_on: [mongo,compiler]
         restart: always
         links: 
             - mongo
@@ -22,6 +22,19 @@ services:
             - "./data:/data/db"
         ports: 
             - "4005:27017"
+    compiler:
+        container_name: compiler
+        image: rastasheep/ubuntu-sshd
+        restart: always
+        volumes: 
+            - "./projects:/project"
+        ports:
+            - "5000:22"
+
+
+
+
+            
 
 
     
