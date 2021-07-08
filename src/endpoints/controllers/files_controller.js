@@ -108,11 +108,39 @@ const deleteFile = async (req, res) => {
     }
 }
 
+const getFileDataByName = async (req, res) => {
+    try {
+        const projectId = req.body.projectId;
+        const fileName = req.body.fileName;
+
+        const project = await Project.findById(projectId);
+
+        if(!project) {
+            return res.status(400).send({ message: 'Invalid projectId' });
+        }
+
+        const file = await File.find({
+            project: projectId,
+            name: fileName
+        });
+
+        if(!file) {
+            return res.status(400).send({ message: 'file not found' });
+        }
+
+        const fileContent = await fs.promises.readFile(project.path + '/' + file.name + file.extension);
+        
+        res.send(fileContent);
+    } catch (e) {
+        res.status(400).send({ message: e.message });
+    }
+}
 
 module.exports = {
     postFile,
     updateFileData,
     getFileData,
     updateFileName,
-    deleteFile
+    deleteFile,
+    getFileDataByName
 }
