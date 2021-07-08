@@ -110,8 +110,8 @@ const deleteFile = async (req, res) => {
 
 const getFileDataByName = async (req, res) => {
     try {
-        const projectId = req.body.projectId;
-        const fileName = req.body.fileName;
+        const projectId = req.query.projectId;
+        const fileName = req.query.fileName;
 
         const project = await Project.findById(projectId);
         
@@ -140,8 +140,8 @@ const getFileDataByName = async (req, res) => {
 
 const getFile = async (req, res) => {
     try {
-        const projectId = req.body.projectId;
-        const fileName = req.body.fileName;
+        const projectId = req.query.projectId;
+        const fileName = req.query.fileName;
 
         const project = await Project.findById(projectId);
         
