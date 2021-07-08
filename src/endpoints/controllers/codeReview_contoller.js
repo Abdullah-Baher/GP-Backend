@@ -49,16 +49,16 @@ const updateCodeReview = async (req, res) => {
 
 const getCodeReviews = async (req, res) => {
     try {
-        const creatorId = req.query.creatorId;
+        const fileId = req.query.fileId;
         let codeReviews;
 
-        if(creatorId) {
-            const creator = await User.findById(creatorId);
-            if(!creator) {
-                return res.status(400).send({ message: 'Invalid creatorId' });
+        if(fileId) {
+            const file = await File.findById(fileId);
+            if(!file) {
+                return res.status(400).send({ message: 'Invalid fileId' });
             }
 
-            codeReviews = await CodeReview.find({ creator: creatorId }).populate("file").populate("creator");
+            codeReviews = await CodeReview.find({ file: fileId }).populate("file").populate("creator");
         } else {
             codeReviews = await CodeReview.find().populate("file").populate("creator");
         }
