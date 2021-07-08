@@ -92,15 +92,15 @@ const removeMemberFromTask = async (req, res) => {
 
 const getTasks = async (req, res) => {
     try {
-        const memberId = req.query.memberId;
+        const projectId = req.query.projectId;
         let tasks;
 
-        if(memberId) {
-            const member = await User.findById(memberId);
-            if(!member) {
-                return res.status(400).send({ message: 'Invalid userId' });
+        if(projectId) {
+            const project = await Project.findById(projectId);
+            if(!project) {
+                return res.status(400).send({ message: 'Invalid projectId' });
             }
-            tasks = await Task.find({ members: { "$in": [memberId] } }).populate("members").populate("project")
+            tasks = await Task.find({ project: projectId }).populate("members").populate("project")
             .populate("comments.creator");
         } 
         else {

@@ -21,7 +21,7 @@ const validatePassword = password => {
 }
 
 const validateIncompleteLoginData = reqBody => {
-    if(!reqBody.email || reqBody.password) {
+    if(!reqBody.email || !reqBody.password) {
         throw new Error('Incomplete data, please provide an email and password');
     }
 }
