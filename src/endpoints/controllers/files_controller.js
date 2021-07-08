@@ -125,7 +125,7 @@ const getFileDataByName = async (req, res) => {
         });
         
         
-        if(!file) {
+        if(file.length === 0) {
             return res.status(400).send({ message: 'file not found' });
         }
 
@@ -137,11 +137,40 @@ const getFileDataByName = async (req, res) => {
     }
 }
 
+
+const getFile = async (req, res) => {
+    try {
+        const projectId = req.body.projectId;
+        const fileName = req.body.fileName;
+
+        const project = await Project.findById(projectId);
+        
+        if(!project) {
+            return res.status(400).send({ message: 'Invalid projectId' });
+        }
+        
+        const file = await File.find({
+            project: projectId,
+            name: fileName
+        });
+
+        if(file.length === 0) {
+            return res.status(400).send({ message: 'file not found' });
+        }
+
+        res.send(file[0]);
+
+    } catch (e) {
+        res.status(400).send({ message: e.message });
+    }
+}
+
 module.exports = {
     postFile,
     updateFileData,
     getFileData,
     updateFileName,
     deleteFile,
-    getFileDataByName
+    getFileDataByName,
+    getFile
 }

@@ -15,6 +15,7 @@ router.get('/files/name', auth, Files_Controller.getFileDataByName);
 
 router.get('/files/:fileId', auth, Files_Controller.getFileData);
 
+router.get('/files', auth, Files_Controller.getFile);
 
 router.delete('/files/:fileId', auth, Files_Controller.deleteFile);
 
