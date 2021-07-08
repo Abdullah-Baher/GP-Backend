@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": " cross-env ENVIRONMENT=production  concurrently \"node ./src/endpoints\"  \"node ./src/language/dist/server.js --port 3000 --languageServers ./src/language/servers.yml\" \"node ./src//terminal/server.js\"  \"node ./src/communication\"  \"peerjs --port 9000\"",
-    "dev": " cross-env ENVIRONMENT=dev  concurrently \"node ./src/endpoints\"  \"node ./src/language/dist/server.js --port 3000 --languageServers ./src/language/servers.yml\" \"node ./src//terminal/server.js\"  \"node ./src/communication\"  \"peerjs --port 9000 --key peerjs\""
+    "dev": " cross-env ENVIRONMENT=dev  concurrently \"node ./src/endpoints\"  \"node ./src/language/dist/server.js --port 3000 --languageServers ./src/language/servers.yml\" \"node ./src//terminal/server.js\"  \"node ./src/communication\"  \"peerjs --port 9000 --key peerjs\"",
+    "terminal":"node ./src//terminal/server.js"
   },
   "author": "",
   "license": "ISC",

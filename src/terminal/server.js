@@ -24,12 +24,16 @@ const io = require("socket.io")(server, {
 
 //Socket Connection
 
-io.on("connection", function (socket)
+try {
+    io.on("connection", function (socket)
 {
+   
     var ssh = new SSHClient();
     ssh.on("ready", function ()
         {
+           
             socket.emit("data", "\r\n*** SSH CONNECTION ESTABLISHED ***\r\n");
+          
             connected = true;
             ssh.shell(function (err, stream)
             {
@@ -53,7 +57,7 @@ io.on("connection", function (socket)
             });
         })
         .on("close", function ()
-        {
+        { console.log('close')
             socket.emit("data", "\r\n*** SSH CONNECTION CLOSED ***\r\n");
         })
         .on("error", function (err)
@@ -65,10 +69,13 @@ io.on("connection", function (socket)
             );
         })
         .connect({
-            host: "localhost",
-            port: "49153", // Generally 22 but some server have diffrent port for security Reson
+            host: "compiler",
+            port: "22", // Generally 22 but some server have diffrent port for security Reson
             username: "root", // user name
             password: "root" // Set password or use PrivateKey
             // privateKey: require("fs").readFileSync("PATH OF KEY ") // <---- Uncomment this if you want to use privateKey ( Example : AWS )
         });
 });
+} catch (error) {
+    console.log(error)
+}

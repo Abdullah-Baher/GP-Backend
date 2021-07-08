@@ -9,10 +9,11 @@ services:
             - "3002:3002"
             - "4000:4000"
             - "9000:9000"
-        depends_on: [mongo]
+        depends_on: [mongo,compiler]
         restart: always
         links: 
             - mongo
+            - compiler
         volumes:
             - "./projects:/src/endpoints/projects"
             - "./pictures:/src/endpoints/pictures"
