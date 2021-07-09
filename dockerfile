@@ -1,3 +1,8 @@
+FROM python:3
+RUN pip install python-language-server
+
+
+
 FROM node:12
 
 WORKDIR /app
@@ -16,5 +21,3 @@ EXPOSE 3000 3001 3002 9000 4000
 
 CMD ["npm", "run","start"]
 
-FROM python:3
-RUN pip install python-language-server
