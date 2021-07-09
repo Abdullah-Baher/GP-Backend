@@ -17,7 +17,7 @@ const connectedUsers = {
 app.use(cors())
 io.on('connection', socket => {
 
-  console.log("xxx");
+
 
   socket.on('join-room', (roomId, userId, user, photo) => {
 
