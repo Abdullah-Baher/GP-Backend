@@ -31,6 +31,7 @@ try {
     var ssh = new SSHClient();
     ssh.on("ready", function ()
         {
+            console.log(socket)
            
             socket.emit("data", "\r\n*** SSH CONNECTION ESTABLISHED ***\r\n");
           
