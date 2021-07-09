@@ -1,6 +1,6 @@
 FROM python:3
 RUN pip install python-language-server
-RUN pyls -v
+
 
 
 FROM node:12
