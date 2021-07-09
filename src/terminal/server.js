@@ -29,7 +29,7 @@ try
 {
     io.on("connection", function (socket)
     {
-        console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!',socket)
+      
         var ssh = new SSHClient();
         ssh.on("ready", function ()
         {
