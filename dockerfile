@@ -6,6 +6,8 @@ COPY package*.json ./
 
 RUN npm install
 RUN npm install peer -g
+RUN apt-get update || : && apt-get install python -y
+RUN pip install python-language-server
 COPY . .
 
 
