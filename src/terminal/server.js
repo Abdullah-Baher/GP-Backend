@@ -12,7 +12,7 @@ var server = http.createServer(app);
 
 
 
-server.listen(serverPort);
+server.listen(serverPort,()=>{console.log('Terminal Started on '+serverPort)});
 
 //socket.io instantiation
 const io = require("socket.io")(server, {
